@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: hausco-postgres
+    environment:
+      POSTGRES_DB: hausco
+      POSTGRES_USER: hausco
+      POSTGRES_PASSWORD: hausco_dev_change_me
+    ports:
+      - "5432:5432"
+    volumes:
+      - hausco_pgdata:/var/lib/postgresql/data
+      - ./database/migrations:/docker-entrypoint-initdb.d
+
+  minio:
+    image: minio/minio:latest
+    container_name: hausco-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: hausco_minio
+      MINIO_ROOT_PASSWORD: hausco_minio_change_me
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - hausco_minio:/data
+
+volumes:
+  hausco_pgdata:
+  hausco_minio:

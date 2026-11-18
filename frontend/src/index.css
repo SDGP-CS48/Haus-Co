@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --hc-amber: #D9940A;
+  --hc-yellow: #F4B41A;
+  --hc-pale: #FDE8A5;
+  --hc-canvas: #FAF7EE;
+  --hc-ink: #1C1C1A;
+  --hc-ink-muted: #57534A;
+  --hc-border: rgba(28, 28, 26, 0.14);
+  --hc-border-strong: rgba(217, 148, 10, 0.45);
+  --hc-status-critical: #B91C1C;
+  --hc-status-warn: #B45309;
+  --hc-status-ok: #15803D;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--hc-canvas);
+    color: var(--hc-ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .font-mono-num {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Restrained architectural drafting grid texture */
+.arch-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(217, 148, 10, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 148, 10, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.arch-grid-fine {
+  background-image:
+    linear-gradient(to right, rgba(28, 28, 26, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 28, 26, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Focus ring accessibility */
+:focus-visible {
+  outline: 2px solid var(--hc-amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
